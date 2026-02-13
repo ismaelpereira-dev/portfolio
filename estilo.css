@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
@@ -26,7 +27,6 @@
   --accent: #3b82f6; /* azul */
 }
 body{
-    margin: 0;
     background-color: var(--bg);
     color: var(--text);
 }
@@ -141,12 +141,8 @@ button{
     margin: 3px;
 }
 #habilidades{
-    
-    min-height: 96vh;
     gap: 30px;
     background-color:var(--bg);
-    
-    
 }
 .caixa{
     background-color: #ffffff;
@@ -227,7 +223,7 @@ button{
 
 /* projetos */
 .projetos{
-    height: 96vh;
+    margin-top: 100px;
 }
 
 .projetos h1{
@@ -380,9 +376,9 @@ button{
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns:repeat(3, 1fr);
   gap: 30px;
-  max-width: 1200px;
+  max-width: 1320px;
   margin: auto;
 }
 
