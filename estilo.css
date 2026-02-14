@@ -852,10 +852,6 @@ a:hover{
 /* =========================
    MARGENS LATERAIS
 ========================= */
-section {
-  padding-left: 16px;
-  padding-right: 16px;
-}
 
 #corpo {
   padding-left: 0;
@@ -884,5 +880,56 @@ body {
 @media (min-width: 1025px) {
   a:hover {
     color: var(--accent);
+  }
+}
+
+@media (max-width: 1024px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  #corpo {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+* {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  #sobre-mim {
+    text-align: ;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  #conteiner {
+    padding: 100px 16px 60px;
+  }
+}
+@media (max-width: 1024px) {
+  #esquerdo-inicio {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1024px) {
+  .titulo-inicio {
+    font-size: 2.2em;
+    line-height: 1.2;
+  }
+}
+@media (max-width: 1024px) {
+  #sobre-mim {
+    font-size: 1.05em;
+    line-height: 1.6;
+    margin-top: 10px;
   }
 }
