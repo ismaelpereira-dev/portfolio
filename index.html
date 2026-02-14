@@ -9,9 +9,23 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+    <script>
+  (function () {
+    const theme = localStorage.getItem("theme");
+
+    if (theme === "dark") {
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+    }
+  })();
+</script>
 </head>
 <body id="body">
     <header id="header-portifolio">
+
+        <div class="container">
 
         <a href="#body">
             <h2 id="titulo">Ismael Santos</h2> 
@@ -27,7 +41,12 @@
                 <button id="theme-toggle" onclick="toggleTheme()">
                 <i class="fa-solid fa-moon" style=""></i>
                 </button>
+                
             </ul>
+            <button id="menu-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
         </div>
     </header>
 
@@ -42,9 +61,16 @@
                 Estou sempre em evolução, buscando aprender novas tecnologias e aprimorar minhas habilidades</p>
                 <div>
                     
-                    <button id="curriculo">baixar curriculo</button>
-                    <button><i class="fa-brands fa-linkedin" style="font-size: 2em; color: #000000;"></i></button>
-                    <button><i class="bi bi-chat" style="font-size: 1.8em; color: #000000;"></i></button>
+                    <button id="curriculo" class="curriculo">
+                        <a href="img/Currículo.pdf" download class="curriculo">baixar curriculo</a>
+                    </button>
+                    <button class="i-inicio">
+                        
+                        <a href="https://www.linkedin.com/in/ismael-santos-dev" target="_blank"><i class="fa-brands fa-linkedin i-inicio" style="font-size: 1.7em; color: #000000;"></i></a>
+                    </button>
+                    <button class="i-inicio">
+                        <a href="https://wa.me/5575983355659" target="_blank"><i class="fab fa-whatsapp" style="font-size: 1.7em; color: #000000;"></i></a>
+                    </button>
                 </div>
             </div>
             <div id="img-rosto">
@@ -54,7 +80,7 @@
 
         <section class="habilidades" id="habilidades">
 
-            <div class="h1-habilidade"><h1>Minhas abilidades</h1></div>
+            <div class="h1-habilidade"><h1>Minhas Habilidades</h1></div>
 
             <div class="conteiner-habiliade">
 
@@ -210,30 +236,16 @@
         <section class="projetos" id="projetos">
             <h1>Projetos</h1>
             <div class="botoes-projetos">
-                <button class="ativo" onclick="mostrarProjetos('academicos')">Acadêmicos</button>
+                <button class="ativo" onclick="mostrarProjetos('academicos')">Pessoais</button>
                 <button onclick="mostrarProjetos('pessoais')">
-                Pessoais
+                Acadêmicos
                 </button>
             </div>
             <div id="academicos" class="lista-projetos">
                 <div class="projeto">
-                    <img src="img/portifolio.png" alt="">
-                    <h3>Portifolio Pessoal</h3>
-                    <p>Desenvolvido para por as minhas habilidades, projetos, certificados, contato e falar sobre mim.</p>
-                    <div class="botao-projeto">
-                        <button>HTML</button>
-                        <button>CSS</button>
-                        <button>JavaScript</button>
-                        <button>UI/UX</button>
-                    </div>
-                    <div class="ver-projeto">
-                        <button>ver projeto</button>
-                    </div>
-                </div>
-                <div class="projeto">
                     <img src="img/mecanica.png" alt="">
                     <h3>Mecânica automotiva</h3>
-                    <p>Projeto desenvolvido por 4 integrantes na Arena Dev, Uma comunidade para ajudar desenvolvedores junior a ter experiência no mercado de trabalho.</p>
+                    <p>Projeto desenvolvido na Arena Dev, Um local para ajudar desenvolvedores a ter experiência no mercado de trabalho.</p>
                     <div class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
@@ -241,21 +253,25 @@
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://ismaelpereira-dev.github.io/mecanica-automotiva/" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
             
                 <div class="projeto">
                     <img src="img/cordel.png" alt="">
                     <h3>Cordel</h3>
-                    <p>Desenvolvido de um cordel ultilizando imagem com paralax.</p>
+                    <p>Desenvolvimento de um cordel ultilizando imagem com paralax.</p>
                     <div class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://ismaelpereira-dev.github.io/projeto-cordel/" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -263,20 +279,22 @@
                 <div class="projeto">
                     <img src="img/andrid.png" alt="">
                     <h3>Projeto Android</h3>
-                    <p>Desenvolvido de um projeto com todos conhecimentos de HTML E CSS.</p>
+                    <p>Desenvolvimento de um projeto com todos conhecimentos de HTML E CSS.</p>
                     <div class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://github.com/ismaelpereira-dev/projeto-android" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
                 <div class="projeto">
                     <img src="img/usuario.png" alt="">
                     <h3>Usuario</h3>
-                    <p>Desenvolvido de umprojrto para as funçes de javascript.</p>
+                    <p>Desenvolvimento de umprojrto para as funçes de javascript.</p>
                     <div  class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
@@ -284,33 +302,39 @@
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://github.com/ismaelpereira-dev/projetos/tree/main/lista-nomes" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
                 <div class="projeto">
                     <img src="img/anna.png" alt="">
                     <h3>Projeto Anna</h3>
-                    <p>Desenvolvido de um projeto com css avançado.</p>
+                    <p>Desenvolvimento de um projeto com css avançado.</p>
                     <div class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://github.com/ismaelpereira-dev/projetos/tree/main/anna-bella" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
                 <div class="projeto">
                     <img src="img/frases.png" alt="">
                     <h3>frases</h3>
-                    <p>Desenvolvido de um projeto para ter frases aleatorias.</p>
+                    <p>Desenvolvimento de um projeto para ter frases aleatorias.</p>
                     <div class="botao-projeto">
                         <button>HTML</button>
                         <button>CSS</button>
                         <button>UI/UX</button>
                     </div>
                     <div class="ver-projeto">
-                        <button>ver projeto</button>
+                        <button>
+                            <a href="https://github.com/ismaelpereira-dev/projetos/tree/main/frases-motivacionais" target="_blank">ver projeto</a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -404,23 +428,23 @@
 
             <div class="footer-col">
                 <h3>Contato</h3>
-                <a href="https://wa.me/5599999999999" target="_blank">
+                <a href="https://wa.me/5575983355659" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="mailto:ismael@email.com">
+                <a href="ismaelsantospereia@email.com">
                  <i class="fa-solid fa-envelope"></i> Email
                 </a>
             </div>
 
             <div class="footer-col">
                 <h3>Redes</h3>
-                <a href="#" target="_blank">
+                <a href="https://github.com/ismaelpereira-dev" target="_blank">
                 <i class="fa-brands fa-github"></i> GitHub
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.linkedin.com/in/ismael-santos-dev" target="_blank">
                 <i class="fa-brands fa-linkedin"></i> LinkedIn
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/ismael.xtx?igsh=MXJkM3kxdDI5NGlzbQ==" target="_blank">
                 <i class="fa-brands fa-instagram"></i> Instagram
                 </a>
             </div>

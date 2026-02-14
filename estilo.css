@@ -2,6 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background-color 0.4s, color 0.4s, border 0.4s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#theme-toggle i {
+  transition: transform 0.4s;
+}
+
+.light #theme-toggle i {
+  transform: rotate(180deg);
 }
 
 :root {
@@ -16,7 +30,7 @@
   --accent: orangered;
 }
 
-.light {
+html.light {
   --bg: #f8fafc;
   --card: #ffffff;
   --card-soft: #f1f5f9;
@@ -45,22 +59,38 @@ body{
 }
 
 #header-portifolio {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background: var(--bg);
+  z-index: 10000;
+}
+
+#header-portifolio .container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 16px;
   display: flex;
   align-items: center;
-
-  position: fixed;
-  left: 0;
-  right: 0;
-
-  width: 100%;
-  max-width: 1320px;
-
-  margin: 0 auto;
-  /* border: 1px solid red; */
-  height: 40px;
-  z-index: 10000;
-  background-color: var(--bg);
 }
+
+
+
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
 #titulo{
     font-size: 1.8em;
     font-family: Arial, Helvetica, sans-serif;
@@ -78,6 +108,8 @@ body{
     
     
 }
+
+
 ul li{
     list-style: none;
     padding: 0;
@@ -91,6 +123,14 @@ a{
 }
 a:hover{
     color:var(--accent);
+}
+.curriculo:hover{
+    color: black;
+}
+
+.i-inicio:hover{
+    background-color: var(--accent);
+    
 }
 #conteiner{
     display: grid;
@@ -108,10 +148,32 @@ a:hover{
 #img-rosto img{
     width: 400px;
     border-radius: 1000px;
-    margin-left: 90px;
+
     box-shadow: 0px 0px 40px var(--accent);
-    
+    animation: float 4s ease-in-out infinite;
 }
+
+#img-rosto {
+  display: flex;
+  justify-content: center;
+}
+
+#img-rosto img {
+  margin: 0;
+  width: 400px;
+}
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  transition: 0.3s;
+}
+
 .titulo-inicio{
     font-size: 3em;
     font-family: Arial, Helvetica, sans-serif;
@@ -147,7 +209,16 @@ button{
 .caixa{
     background-color: #ffffff;
     box-shadow: 0 0 2px var(--border);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.6s ease;
 }
+
+.caixa.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .front{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -161,6 +232,7 @@ button{
     align-items: center;
     border-radius: 20px;
     box-shadow: 0 0 2px var(--text);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .icons p{
     font-size: 0.5em;
@@ -168,6 +240,12 @@ button{
     margin-top: 2px;
     
 }
+
+.icons:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
 .next{
     color: var(--text);
 }
@@ -236,35 +314,78 @@ button{
 }
 
 .botoes-projetos {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .botoes-projetos button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  background: #e5e5e5;
-  border-radius: 6px;
-  font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: #e5e5e5;
+    border-radius: 6px;
+    font-weight: 600;
 }
 
 .botoes-projetos button.ativo {
-  background: var(--accent);
-  color: #ffffff;
+    background: var(--accent);
+    color: #ffffff;
 }
 
 .lista-projetos {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3,1fr);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3,1fr);
 }
 
 .projeto {
-  border-radius: 20px;
-  background-color: var(--card);
+    border-radius: 20px 20px 0px 0px;
+    background-color: var(--card);
+
 }
+
+.projeto {
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.projeto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.projeto img {
+    transition: transform 0.5s;
+}
+
+.projeto:hover img {
+    transform: scale(1.1);
+}
+
+.ver-projeto {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s;
+    margin: 11px 0px 5px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+
+.ver-projeto button{
+    border-radius: 7px;
+    padding: 7px 30px;
+    font-size: 1em;
+    background-color: #f1f5f9;
+
+}
+
+
+
+.projeto:hover .ver-projeto {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .projeto img{
     width: 100%;
     height: 200px;
@@ -273,7 +394,7 @@ button{
 }
 
 .escondido {
-  display: none;
+    display: none;
 }
 .projeto h3{
     font-family: Arial, Helvetica, sans-serif;
@@ -292,17 +413,44 @@ button{
 .botao-projeto{
     margin: 10px;
 }
-.ver-projeto{
-    margin: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+
+.projeto {
+    position: relative;
+    overflow: hidden;
+}
+
+.projeto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* zoom */
+.projeto:hover img {
+    transform: scale(1.15);
+}
+
+/* fade nas bordas */
+.projeto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+     circle,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.35) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.projeto:hover::after {
+    opacity: 1;
 }
 
 /* certificados */
-
-.certificados{
-    
-}
-
 .h1-certificado{
     padding-top: 100px;
     margin-top: 20px;
@@ -324,7 +472,25 @@ button{
     border-radius: 12px;
     border: 1px solid #000000;
     border-radius: 20px;
+    animation: fadeUp 0.6s ease forwards;
     font-family: Arial, Helvetica, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificado:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .certificado ul {
@@ -354,6 +520,10 @@ button{
     position: relative;
     padding-left: 18px;
     margin-bottom: 17px;
+    transition: transform 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
+    transform-origin: center;
 }
 
 .certificado ul li::before {
@@ -363,6 +533,17 @@ button{
     color: var(--accent);
     font-size: 18px;
     line-height: 1;
+}
+
+.certificado:hover ul li:hover {
+  transform: scale(1.03);
+}
+
+.certificado ul li:nth-child(odd) {
+  transition-delay: 0.03s;
+}
+.certificado ul li:nth-child(even) {
+  transition-delay: 0.06s;
 }
 
 /* footer */
@@ -406,4 +587,302 @@ button{
   text-align: center;
   margin-top: 30px;
   font-size: 14px;
+}
+
+/* =========================
+   NAV MOBILE + TABLET
+========================= */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6em;
+  margin-left: auto;
+}
+
+@media (max-width: 1024px) {
+  #menu-toggle {
+    display: block;
+    font-size: 2em;
+    color: var(--text);
+  }
+
+  #titulo:hover{
+    cursor: inherit;
+
+  }
+
+  #titulo{
+    font-size: 2em;
+  }
+
+  #link ul {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: var(--card);
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    display: none;
+    border-radius: 0 0 12px 12px;
+  }
+  
+
+  #link ul.ativo {
+    display: flex;
+  }
+}
+@media (max-width: 1024px) {
+  #link ul {
+    left: 16px;
+    right: 16px;
+    width: auto;
+  }
+
+  .footer{
+    padding-left: 25px;
+    padding-right: 10px;
+  }
+ 
+    .footer a{
+    font-size: 1.1em;
+  }
+}
+
+a:hover{
+  color: inherit;
+}
+
+
+/* =========================
+   INÍCIO (FOTO EM CIMA)
+========================= */
+@media (max-width: 1024px) {
+  #conteiner {
+    display: grid;
+    grid-template-areas:
+      "foto"
+      "texto";
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  #img-rosto {
+    grid-area: foto;
+    margin: auto;
+    padding-bottom: 40px;
+  }
+
+  #esquerdo-inicio {
+    grid-area: texto;
+    padding: 0;
+    text-align: center;
+
+    
+  }
+
+  #img-rosto img {
+    
+    width: 260px;
+  }
+  #sobre-mim,
+  .texto-inicio p {
+  text-align: center;
+}
+#img-rosto {
+  display: flex;
+  justify-content: center;
+}
+
+#img-rosto img {
+  display: block;
+  border-radius: 50%;
+}
+}
+
+@media (max-width: 768px) {
+
+  #titulo{
+    font-size: 1.2em;
+  }
+
+    #menu-toggle {
+    font-size: 1.2em;
+  }
+
+
+  #img-rosto {
+  grid-area: foto;
+}
+
+ #esquerdo-inicio {
+  grid-area: texto;
+}
+
+#img-rosto {
+    margin-bottom: 20px;
+}
+
+.footer a{
+    font-size: 0.9em;
+  }
+
+ }
+  
+
+    @media (max-width: 1024px) {
+  #img-rosto img {
+    width: 260px;
+  }
+}
+
+/* =========================
+   HABILIDADES – CARROSSEL
+========================= */
+@media (max-width: 1024px) {
+  .conteiner-habiliade {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 1000px;
+  }
+
+  .ferramentas {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding: 10px 16px;
+  }
+
+  .icons {
+    min-width: 140px;
+    height: 110px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+    #header-portifolio {
+  transition: transform 0.35s ease;
+}
+
+#header-portifolio.hide {
+  transform: translateY(-100%);
+}
+  
+}
+
+/* =========================
+   TABLET – TAMANHOS AJUSTADOS
+========================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .icons {
+    min-width: 180px;
+    height: 120px;
+  }
+
+  .certificado {
+    max-width: 420px;
+  }
+
+  .certificado p,
+  .certificado li {
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+
+}
+
+/* =========================
+   PROJETOS – CARROSSEL
+========================= */
+@media (max-width: 1024px) {
+  .lista-projetos {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    scroll-snap-type: x mandatory;
+    padding: 14px 0px 16px 16px;
+  }
+
+  .projeto {
+    min-width: 75%;
+    scroll-snap-align: center;
+  }
+
+  .botoes-projetos {
+  display: none !important;
+}
+.ver-projeto {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: static;
+}
+
+}
+
+/* =========================
+   BOTÃO VER PROJETO (SEM HOVER)
+========================= */
+
+/* =========================
+   ESCONDER BOTÕES ACADÊMICO / PESSOAL
+========================= */
+
+/* =========================
+   CERTIFICADOS – CARROSSEL
+========================= */
+@media (max-width: 1024px) {
+  .certificados-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    scroll-snap-type: x mandatory;
+    padding: 0 16px 16px;
+  }
+
+  .certificado {
+    min-width: 80%;
+    scroll-snap-align: center;
+  }
+}
+
+/* =========================
+   MARGENS LATERAIS
+========================= */
+section {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#corpo {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* =========================
+   SCROLL LIMPO
+========================= */
+.lista-projetos,
+.certificados-grid,
+.ferramentas {
+  scrollbar-width: none;
+}
+
+.lista-projetos::-webkit-scrollbar,
+.certificados-grid::-webkit-scrollbar,
+.ferramentas::-webkit-scrollbar {
+  height: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (min-width: 1025px) {
+  a:hover {
+    color: var(--accent);
+  }
 }
